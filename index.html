@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <!-- Google APIs (直接讀寫 Sheets 用) -->
     <script src="https://apis.google.com/js/api.js" async defer></script>
 </head>
+
 <body>
     <div class="container">
         <!-- 登入區塊 -->
@@ -27,7 +29,7 @@
             <!-- 頂部導覽與使用者資訊 -->
             <nav class="nav-bar">
                 <div class="user-info">
-                    您好，<span id="user-name-display" class="highlight-text"></span> 
+                    您好，<span id="user-name-display" class="highlight-text"></span>
                     <span class="role-badge" id="user-role-display"></span>
                 </div>
                 <button id="logout-btn" class="text-btn">登出</button>
@@ -54,7 +56,7 @@
                     <h2>訂單確認</h2>
                     <button id="copy-orders-btn" class="secondary-btn">📋 一鍵複製訂單 (LINE)</button>
                 </div>
-                
+
                 <!-- 營業額統計圖表 -->
                 <div class="chart-container mt-3">
                     <canvas id="salesChart"></canvas>
@@ -82,7 +84,7 @@
             <!-- 3. 管理員專區頁籤 -->
             <div id="admin-tab" class="tab-content hidden">
                 <h2>管理員專區</h2>
-                
+
                 <!-- 設定餐廳區塊 -->
                 <div class="admin-card">
                     <h3>設定今日餐廳</h3>
@@ -109,4 +111,5 @@
     <!-- 引用主邏輯指令碼 -->
     <script src="all.js"></script>
 </body>
+
 </html>

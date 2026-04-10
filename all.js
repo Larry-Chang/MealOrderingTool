@@ -432,7 +432,7 @@ function renderOrders() {
         `;
         tbody.appendChild(tr);
     }
-    
+
     // 渲染營業額統計圖表
     renderSalesChart();
 }
@@ -453,13 +453,13 @@ function renderSalesChart() {
             const row = orders[i];
             const restaurant = row[2];
             const price = parseInt(row[4], 10) || 0;
-            
+
             if (!restaurant) continue;
 
             if (salesData[restaurant] !== undefined) {
                 salesData[restaurant] += price;
             } else {
-                salesData[restaurant] = price; 
+                salesData[restaurant] = price;
             }
         }
     }

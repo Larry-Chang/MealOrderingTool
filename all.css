@@ -35,13 +35,34 @@ body {
 }
 
 /* 常用工具類 CSS */
-.hidden { display: none !important; }
-.mt-1 { margin-top: 0.5rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mt-4 { margin-top: 2rem; }
-.mb-3 { margin-bottom: 1.5rem; }
-.text-danger { color: var(--danger-color); }
-.help-text { font-size: 0.9em; color: var(--text-light); }
+.hidden {
+    display: none !important;
+}
+
+.mt-1 {
+    margin-top: 0.5rem;
+}
+
+.mt-3 {
+    margin-top: 1.5rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+.text-danger {
+    color: var(--danger-color);
+}
+
+.help-text {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
 
 /* 共用按鈕設計 */
 button {
@@ -60,14 +81,20 @@ button {
     font-weight: bold;
     width: 100%;
 }
-.primary-btn:hover { background-color: var(--primary-hover); }
+
+.primary-btn:hover {
+    background-color: var(--primary-hover);
+}
 
 .secondary-btn {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
 }
-.secondary-btn:hover { background-color: #bee3f8; }
+
+.secondary-btn:hover {
+    background-color: #bee3f8;
+}
 
 .danger-btn {
     background-color: var(--danger-color);
@@ -75,7 +102,10 @@ button {
     font-weight: bold;
     width: 100%;
 }
-.danger-btn:hover { background-color: var(--danger-hover); }
+
+.danger-btn:hover {
+    background-color: var(--danger-hover);
+}
 
 .text-btn {
     background: transparent;
@@ -83,23 +113,29 @@ button {
     text-decoration: underline;
     padding: 5px 10px;
 }
-.text-btn:hover { color: var(--primary-color); }
+
+.text-btn:hover {
+    color: var(--primary-color);
+}
 
 /* 登入區塊 */
 #login-section {
     text-align: center;
     padding: 8vh 20px;
 }
+
 .logo-title {
     font-size: 2.2rem;
     margin-bottom: 15px;
     color: var(--primary-color);
 }
+
 .subtitle {
     color: var(--text-light);
     margin-bottom: 40px;
     font-size: 1.1em;
 }
+
 .status-msg {
     color: var(--danger-color);
     font-weight: bold;
@@ -114,6 +150,7 @@ button {
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 20px;
 }
+
 .role-badge {
     font-size: 0.8em;
     background: #edf2f7;
@@ -130,6 +167,7 @@ button {
     overflow-x: auto;
     padding-bottom: 5px;
 }
+
 .tab-btn {
     background-color: #edf2f7;
     color: var(--text-color);
@@ -137,6 +175,7 @@ button {
     padding: 10px 20px;
     font-weight: bold;
 }
+
 .tab-btn.active {
     background-color: var(--primary-color);
     color: white;
@@ -146,13 +185,27 @@ button {
 .tab-content {
     animation: fadeIn 0.3s ease-in-out;
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-h2 { margin-bottom: 20px; color: var(--text-color); }
-.highlight-text { color: var(--primary-color); }
+h2 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.highlight-text {
+    color: var(--primary-color);
+}
 
 /* 餐點卡片網格 */
 .menu-grid {
@@ -160,6 +213,7 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
+
 .menu-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -169,11 +223,13 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     display: flex;
     flex-direction: column;
 }
+
 .menu-card h3 {
     font-size: 1.25rem;
     margin-bottom: 5px;
     color: var(--text-color);
 }
+
 .menu-card .restaurant-badge {
     font-size: 0.8rem;
     background: var(--secondary-color);
@@ -184,12 +240,14 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     margin-bottom: 12px;
     font-weight: bold;
 }
+
 .menu-card .price {
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--primary-color);
     margin-bottom: 15px;
 }
+
 .menu-card input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -198,6 +256,7 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     margin-bottom: 15px;
     font-size: 0.95rem;
 }
+
 .menu-card input[type="text"]:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -212,7 +271,10 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     flex-wrap: wrap;
     gap: 15px;
 }
-.list-header h2 { margin: 0; }
+
+.list-header h2 {
+    margin: 0;
+}
 
 .table-responsive {
     overflow-x: auto;
@@ -220,22 +282,29 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
+
 .orders-table {
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
 }
-.orders-table th, .orders-table td {
+
+.orders-table th,
+.orders-table td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
 }
+
 .orders-table th {
     background-color: #f8fafc;
     font-weight: bold;
     color: var(--text-light);
 }
-.orders-table tr:last-child td { border-bottom: none; }
+
+.orders-table tr:last-child td {
+    border-bottom: none;
+}
 
 /* 營業額圖表容器 */
 .chart-container {
@@ -257,16 +326,19 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     padding: 25px;
     box-shadow: var(--shadow);
 }
+
 .danger-zone {
     border-color: #feb2b2;
     background-color: #fff5f5;
 }
+
 .checkbox-group {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-top: 15px;
 }
+
 .checkbox-label {
     display: flex;
     align-items: center;
@@ -274,6 +346,7 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     cursor: pointer;
     font-size: 1.1rem;
 }
+
 .checkbox-label input[type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -294,6 +367,7 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
     transition: opacity 0.3s ease, transform 0.3s ease;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
+
 .toast.hidden {
     opacity: 0;
     transform: translate(-50%, 20px);
@@ -302,8 +376,21 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
 
 /* 手機版排版調整 */
 @media (max-width: 600px) {
-    .container { padding: 15px; }
-    .logo-title { font-size: 1.8rem; }
-    .tabs { flex-wrap: nowrap; padding-bottom: 10px; }
-    .tab-btn { font-size: 0.9rem; padding: 8px 15px; }
+    .container {
+        padding: 15px;
+    }
+
+    .logo-title {
+        font-size: 1.8rem;
+    }
+
+    .tabs {
+        flex-wrap: nowrap;
+        padding-bottom: 10px;
+    }
+
+    .tab-btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
 }

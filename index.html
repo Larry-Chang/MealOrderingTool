@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司內部點餐工具</title>
+    <link rel="stylesheet" href="all.css">
+    <!-- Google Identity Services (登入用) -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Google APIs (直接讀寫 Sheets 用) -->
+    <script src="https://apis.google.com/js/api.js" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 登入區塊 -->
+        <div id="login-section" class="section">
+            <h1 class="logo-title">🍽️ 內部點餐系統</h1>
+            <p class="subtitle">請使用公司 Google 帳號登入進行授權</p>
+            <button id="auth-btn" class="primary-btn">Google 帳號登入登入</button>
+            <p id="login-status" class="status-msg mt-3"></p>
+        </div>
+
+        <!-- 主應用區塊 (預設隱藏，登入後顯示) -->
+        <div id="app-section" class="section hidden">
+            <!-- 頂部導覽與使用者資訊 -->
+            <nav class="nav-bar">
+                <div class="user-info">
+                    您好，<span id="user-name-display" class="highlight-text"></span> 
+                    <span class="role-badge" id="user-role-display"></span>
+                </div>
+                <button id="logout-btn" class="text-btn">登出</button>
+            </nav>
+
+            <!-- 頁籤切換按鈕 -->
+            <div class="tabs">
+                <button class="tab-btn active" data-target="order-tab">開始點餐</button>
+                <button class="tab-btn" data-target="list-tab">今日訂單</button>
+                <button class="tab-btn hidden" id="admin-tab-btn" data-target="admin-tab">管理員專區</button>
+            </div>
+
+            <!-- 1. 點餐頁籤 -->
+            <div id="order-tab" class="tab-content active">
+                <h2>今日開放餐廳：<span id="today-restaurants-display" class="highlight-text">載入中...</span></h2>
+                <div id="menu-container" class="menu-grid">
+                    <!-- 餐點卡片會透過 JS 動態生成於此 -->
+                </div>
+            </div>
+
+            <!-- 2. 訂單確認頁籤 -->
+            <div id="list-tab" class="tab-content hidden">
+                <div class="list-header">
+                    <h2>訂單確認</h2>
+                    <button id="copy-orders-btn" class="secondary-btn">📋 一鍵複製訂單 (LINE)</button>
+                </div>
+                <div class="table-responsive mt-3">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>時間</th>
+                                <th>訂購人</th>
+                                <th>餐廳</th>
+                                <th>品名</th>
+                                <th>金額</th>
+                                <th>備註</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-tbody">
+                            <!-- 訂單資料會動態寫入 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3. 管理員專區頁籤 -->
+            <div id="admin-tab" class="tab-content hidden">
+                <h2>管理員專區</h2>
+                
+                <!-- 設定餐廳區塊 -->
+                <div class="admin-card">
+                    <h3>設定今日餐廳</h3>
+                    <p class="help-text">請勾選今天要開放的餐廳，這將會影響點餐清單：</p>
+                    <div id="restaurant-checkboxes" class="checkbox-group">
+                        <!-- 餐廳選項動態產生 -->
+                    </div>
+                    <button id="save-today-restaurants" class="primary-btn mt-3">儲存今日餐廳設定</button>
+                </div>
+
+                <!-- 危險操作區塊 -->
+                <div class="admin-card danger-zone mt-4">
+                    <h3>危險操作</h3>
+                    <button id="clear-orders-btn" class="danger-btn">🗑️ 清空今日所有點餐資料</button>
+                    <p class="help-text text-danger mt-1">注意：此操作將徹底清除 Google 表單 Orders 內除標題外的所有紀錄。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 浮動訊息提示 (Toast) -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- 引用主邏輯指令碼 -->
+    <script src="all.js"></script>
+</body>
+</html>

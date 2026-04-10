@@ -25,6 +25,7 @@ let currentUser = {      // 目前登入者資訊
 let allUsers = [];       // 快取所有使用者名單 (輔助查詢姓名使用)
 let rawMenuData = [];    // 取得的完整菜單
 let todayRestaurants = []; // 今日有開放的餐廳
+let salesChartInstance = null; // Chart.js 圖表實例
 
 
 /**
@@ -431,6 +432,85 @@ function renderOrders() {
         `;
         tbody.appendChild(tr);
     }
+    
+    // 渲染營業額統計圖表
+    renderSalesChart();
+}
+
+// 渲染圖表函式
+function renderSalesChart() {
+    const orders = window.currentOrders || [];
+    const salesData = {};
+
+    // 先初始化「今日有開放的餐廳」，預設營業額為 0
+    todayRestaurants.forEach(rest => {
+        salesData[rest] = 0;
+    });
+
+    // 累加訂單金額
+    if (orders.length > 1) {
+        for (let i = 1; i < orders.length; i++) {
+            const row = orders[i];
+            const restaurant = row[2];
+            const price = parseInt(row[4], 10) || 0;
+            
+            if (!restaurant) continue;
+
+            if (salesData[restaurant] !== undefined) {
+                salesData[restaurant] += price;
+            } else {
+                salesData[restaurant] = price; 
+            }
+        }
+    }
+
+    const labels = Object.keys(salesData);
+    const data = Object.values(salesData);
+
+    const ctx = document.getElementById('salesChart');
+    if (!ctx) return;
+
+    // 若圖表已存在，需要先銷毀才能重新繪製
+    if (salesChartInstance) {
+        salesChartInstance.destroy();
+    }
+
+    salesChartInstance = new Chart(ctx.getContext('2d'), {
+        type: 'bar', // 長條圖
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '營業額 (元)',
+                data: data,
+                backgroundColor: 'rgba(43, 108, 176, 0.7)',
+                borderColor: 'rgba(43, 108, 176, 1)',
+                borderWidth: 1,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false // 隱藏圖例，因為只有單一資料維度
+                },
+                title: {
+                    display: true,
+                    text: '今日商家營業額統計',
+                    font: {
+                        size: 16,
+                        family: "'Helvetica Neue', '微軟正黑體', sans-serif"
+                    }
+                }
+            }
+        }
+    });
 }
 
 // 產生友善的純文本，複製以利於 LINE 或 Slack 確認對帳

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>公司內部點餐工具</title>
     <link rel="stylesheet" href="all.css">
+    <!-- Chart.js (圖表用) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Google Identity Services (登入用) -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Google APIs (直接讀寫 Sheets 用) -->
@@ -52,6 +54,12 @@
                     <h2>訂單確認</h2>
                     <button id="copy-orders-btn" class="secondary-btn">📋 一鍵複製訂單 (LINE)</button>
                 </div>
+                
+                <!-- 營業額統計圖表 -->
+                <div class="chart-container mt-3">
+                    <canvas id="salesChart"></canvas>
+                </div>
+
                 <div class="table-responsive mt-3">
                     <table class="orders-table">
                         <thead>

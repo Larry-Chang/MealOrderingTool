@@ -237,6 +237,18 @@ h2 { margin-bottom: 20px; color: var(--text-color); }
 }
 .orders-table tr:last-child td { border-bottom: none; }
 
+/* 營業額圖表容器 */
+.chart-container {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
 /* 管理員卡片 */
 .admin-card {
     background: var(--card-bg);
